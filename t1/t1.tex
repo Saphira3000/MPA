@@ -47,10 +47,13 @@ Los datos se guardan en un archivo \textsc{csv} y el análisis descriptivo se re
 
 \section{Diagramas caja bigote}
 
-En la figura \ref{vic} se observan los diagramas de caja bigote que resumen la información de la tasa de prevalencia delictiva por cada cien mil habitantes en cada una de las entidades federativas en el periodo 2010-2018. Es de esperarse que el Estado de México presente una mediana mayor al resto ya que es de los estados más poblado del país.
+En la figura \ref{vic} se observan los diagramas de caja bigote que resumen la información de la tasa de prevalencia delictiva por cada cien mil habitantes en cada una de las entidades federativas en el periodo 2010-2018. Es de esperarse que el Estado de México presente una mediana mayor al resto ya que es de los estados más poblado del país, le sigue la Ciudad de México y Baja California Norte.
 
-El INEGI también proporciona información de la tasa de prevalencia delictiva por cada cien mil habitantes según el sexo de la víctima, por lo que también es recopilada esa información para el Estado de Máxico. Se realiza este análisis porque anteriormente se observó que esta entidad presenta, en promedio, la mayor la tasa de incidencias delictivas. Esta última información se recopila directamente en un script de \textsc{R} (\textsc{t1.R}). La figura \ref{vic.edomex} muestra que, en promedio, la tasa de prevalencia delictiva en hombres es mayor en el caso de las mujeres. 
+El INEGI también proporciona información de la tasa de prevalencia delictiva por cada cien mil habitantes según el sexo de la víctima, por lo que también es recopilada esa información para los tres estados con mayor tasa delictiva (Estado de México, Ciudad de México y Baja California Norte). Esta última información se recopila directamente en un script de \textsc{R} (\textsc{t1.R}). 
 
+Se realiza primero un análisis individual para el Estado de México y, de acuerdo a lo mostrado en la figura \ref{vic.edomex} se puede concluir que, en promedio, la tasa de prevalencia delictiva en hombres es mayor en el caso de las mujeres.  
+
+Finalmente, en el diagrama mostrado en la figura \ref{principales}, se observa la tasa de prevalencia según el sexo. Podemos notar que en el estado de Baja California Norte, en promedio, la mayoría de las víctimas fueron mujeres. 
 
 \begin{figure}
 	\centering
@@ -61,9 +64,16 @@ El INEGI también proporciona información de la tasa de prevalencia delictiva p
 
 \begin{figure}
 	\centering
-	\includegraphics[scale=0.5]{edomex.png}
+	\includegraphics[scale=0.4]{edomex.png}
 	\caption{Diagrama caja bigote de la tasa de prevalencia delictiva por cada cien mil habitantes, en el periodo 2010-2018, para el Estado de México según el sexo.}
 	\label{vic.edomex}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{delitos_sexo.png}
+	\caption{Diagrama caja bigote de la tasa de prevalencia delictiva por cada cien mil habitantes, en el periodo 2010-2018, según el sexo del Estado de México, Ciudad de México y Baja California Norte.}
+	\label{principales}
 \end{figure}
 
 \nocite{*}
