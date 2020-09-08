@@ -5,7 +5,8 @@
 \usepackage{float}
 \usepackage[small]{caption}
 \usepackage[spanish]{babel}
-\usepackage{enumerate, amsmath, amssymb, listings}
+\usepackage{enumerate, amsmath, amssymb}
+\usepackage{url}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -19,12 +20,11 @@
 \hrule height2.5pt
 \vspace{.1cm}
 \hrule height1pt
-\vspace{.3cm}
+%\vspace{.3cm}
 
 \begin{center}
-\Large {An\'alisis factorial del porcentaje de ocupaci\'on en la poblaci\'on mexicana.} \bigskip \\
-{ Gabriela S\'anchez Y.\\
-1935064}
+Tarea 1\\
+Gabriela S\'anchez Y.\\
 \end{center}
 
 \vspace{.3cm}
@@ -34,23 +34,41 @@
 \vspace*{.5cm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+En esta actividad se realiza un análisis descriptivo de la prevalencia delictiva en las entidades federativas del país en el periodo 2010-2018.
 
-\section{Introducci\'on}
-Es de inter\'es conocer el estado ocupacional de una poblaci\'on ya que est\'a claro que una sociedad econ\'omicamente activa propiciar\'a la prosperidad y el desarrollo de dicha poblaci\'on.  \bigskip \\
-La finalidad de este trabajo es facilitar al lector el an\'alisis de algunos de los indicadores presentes en la Encuesta Nacional de Ocupaci\'on y Empleo realizada por el Instituto Nacional de Estad\'istica y Geograf\'ia de M\'exico en el a\~no 2017. \bigskip \\
-Para ello, se decidi\'o estudiar la existencia o ausencia de una relaci\'on de dependencia entre los diferentes niveles de estudios y el estado de ocupaci\'on en individuos de la poblaci\'on mexicana pertenecientes a localidades rurales y urbanos. \bigskip \\
-Es decir, que se busca conocer si tanto el nivel de estudios as\'i como la zona o localidad en la que residen tienen alg\'un tipo de influencia positiva o negativa en el porcentaje de actividad ocupacional de la poblaci\'on a la que pertenecen.
+\section{Datos}
+
+Los datos utilizados para el análisis se obtienen de la página del INEGI en la sección correspondiente a Seguridad pública y justicia \cite{inegi}. En este trabajo, únicamente se analiza la información acerca de la tasa de prevalencia delictiva por cada cien mil habitantes de cada una de las 32 entidades federativas del país, en el periodo comprendido entre los años 2010 a 2018.
+
+%La información se muestra como una tasa por cada cien mil habitantes. %n los datos sobre victimización que el INEGI define como \textit{delito que afecta a una persona o a un hogar}. que afectó a los hogares mexicanos 
+
+Los datos se guardan en un archivo \textsc{csv} y el análisis descriptivo se realiza con la ayuda del lenguaje de programación \textsc{R} versión 4.0.2 \cite{r}.
 
 
+\section{Diagramas caja bigote}
+
+En la figura \ref{vic} se observan los diagramas de caja bigote que resumen la información de la tasa de prevalencia delictiva por cada cien mil habitantes en cada una de las entidades federativas en el periodo 2010-2018. Es de esperarse que el Estado de México presente una mediana mayor al resto ya que es de los estados más poblado del país.
+
+El INEGI también proporciona información de la tasa de prevalencia delictiva por cada cien mil habitantes según el sexo de la víctima, por lo que también es recopilada esa información para el Estado de Máxico. Se realiza este análisis porque anteriormente se observó que esta entidad presenta, en promedio, la mayor la tasa de incidencias delictivas. Esta última información se recopila directamente en un script de \textsc{R} (\textsc{t1.R}). La figura \ref{vic.edomex} muestra que, en promedio, la tasa de prevalencia delictiva en hombres es mayor en el caso de las mujeres. 
 
 
-\subsection{An\'alisis estad\'istico de datos}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{victimizacion.png}
+	\caption{Diagrama caja bigote de la tasa de prevalencia delictiva por cada cien mil habitantes en el periodo 2010-2018.}
+	\label{vic}
+\end{figure}
 
- 
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{edomex.png}
+	\caption{Diagrama caja bigote de la tasa de prevalencia delictiva por cada cien mil habitantes, en el periodo 2010-2018, para el Estado de México según el sexo.}
+	\label{vic.edomex}
+\end{figure}
 
 \nocite{*}
 \bibliographystyle{plain}
-\bibliography{biblio_disenio}
+\bibliography{biblio}
 
 
 
