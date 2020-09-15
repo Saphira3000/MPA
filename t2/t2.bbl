@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{textMining}
+{Julia Silge and David Robinson}.
+\newblock {Text Mining with R}.
+\newblock \url{https://www.tidytextmining.com/tidytext.html}.
+
+\bibitem{r}
+{The R Foundation}.
+\newblock {The R Project for Statistical Computing}.
+\newblock \url{https://www.r-project.org/}.
+
+\end{thebibliography}
