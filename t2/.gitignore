@@ -5,6 +5,6 @@
 # LaTex
 .aux
 .log
-.synctex.gz
+.gz
 .bbl
 .blg
