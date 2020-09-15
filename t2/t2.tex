@@ -1,8 +1,9 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{graphicx, color, multicol, multirow}
-\usepackage[small]{caption}
+\usepackage{graphicx, color}
+\usepackage{subcaption}
+%\usepackage[small]{caption}
 \usepackage[spanish]{babel}
 \usepackage{url}
 \setlength{\parskip}{\baselineskip}
@@ -24,7 +25,7 @@
 	\thispagestyle{empty}
 
 	\begin{center}
-		{\Large Frecuencias e histogramas}\\
+		{\Large Frecuencias}\\ % e histogramas}\\
 		Gabriela S\'anchez Y.\\
 		5064
 	\end{center}
@@ -81,11 +82,7 @@
 		\end{tabular}
 	\end{table}
 
-	Continuando con las palabras más frecuentes, en la figura \ref{palabras_dec} se muestra un gráfico de barras que muestra la frecuencia de las 20 palabras siguientes en frecuencia a las del cuadro \ref{frecuencia_palabras}. Pueden observarse otro nombres como \textit{Gilbert y Jane} y, lo que parece ser apellidos \textit{Lynde} y \textit{Barry}, por lo que podríamos decir que son personajes secundarios en la novela. 
-	
-	Una persona que ya ha leído el libro sabe que \textit{Barry} es el apellido de \textit{Diana}. Esto hace notar que este análisis no se permite inferir mucho acerca del contenido del texto, una mejor opción es considerar la frecuencia en que aparecen dos o más palabras juntas.
-	
-	prueba prueba
+	Continuando con las palabras más frecuentes, en la figura \ref{palabras_dec} se muestra un gráfico de barras que muestra la frecuencia de las 20 palabras siguientes en frecuencia a las del cuadro \ref{frecuencia_palabras}. Pueden observarse otros nombres como \textit{Gilbert y Jane} y, lo que parecen ser apellidos \textit{Lynde} y \textit{Barry}, por lo que podríamos decir que son personajes secundarios en la novela. 
 	
 	\begin{figure}
 		\centering
@@ -93,6 +90,32 @@
 		\caption{Gráfico de barras de las palabras más frecuentes en el texto, una vez realizados dos filtros.}
 		\label{palabras_dec}
 	\end{figure}
+	
+	Una persona que ya ha leído el libro sabe que \textit{Barry} es el apellido de \textit{Diana}. Esto advierte que un análisis de palabras ``sueltas'' no permite inferir mucho acerca del contenido del texto, una mejor opción es considerar la frecuencia en que aparecen dos o más palabras juntas.
+	
+	Antes de proceder a analizar conjuntos de palabras, se examinan las palabras positivas y negativas más comunes de acuerdo al léxico \texttt{bing}, que es posible obtener a través de la función \texttt{get\_sentiments}. La figura \ref{palabras_pos-neg} muestra las 10 palabras más comunes positivas (figura \ref{palabras_positivas}) y negativas (figura \ref{palabras_negativas}). 
+	
+	En el gráfico de barras mostrado en la figura \ref{palabras_negativas} se puede apreciar que la palabra negativa con más frecuencia en el libro es \textit{miss}. Sin embargo, aquí se señala un problema. Se sabe que tanto en español como en inglés existen palabras homónimas, es decir, palabras cuya pronunciación o escritura es igual o similar pero que tienen diferente significado. En este caso, personas que ya han leído el libro, pueden advertir que el personaje principal se refiere a su profesora como \textit{Miss Stacy}, otro personaje relevante en la novela. por lo que no se garantiza que \textit{miss} en su connotación ``negativa'' realmente tenga una frecuencia más alta que las otras palabras mostradas en el gráfico.
+	
+	\begin{figure}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width = 0.9\linewidth]{palabras_positivas.png}
+			\caption{Palabras positivas}
+			\label{palabras_positivas}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[width = 0.9\linewidth]{palabras_negativas.png}
+			\caption{Palabras negativas}
+			\label{palabras_negativas}
+		\end{subfigure}
+	
+		\caption{Gráfico de barras de las palabras positivas y negativas más frecuentes.}
+		\label{palabras_pos-neg}
+	\end{figure}
+	
+
 \bibliographystyle{plain}
 \bibliography{biblio}
 
