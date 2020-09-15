@@ -62,7 +62,7 @@
 	
 	\begin{table}
 		\centering
-		\caption{Cuadro con las palabras más comunes y su frecuencia.}
+		\caption{Palabras más comunes y su frecuencia.}
 		\label{frecuencia_palabras}
 		\begin{tabular}{l|l}
 			\hline
@@ -115,7 +115,39 @@
 		\label{palabras_pos-neg}
 	\end{figure}
 	
+	Por último, se analiza la frecuencia en que aparecen las secuencias de dos palabras, también llamado bigrama. El análisis de los brigramas se realiza con los datos que previamente filtraron las palabras vacías, ya que si se omite ese paso, los resultados obtenidos muestran serán los que se muestran en el cuadro \ref{frecuencia_bigramas} y dicha información no aporta sobre el contenido del libro.
+	
+	\begin{table}
+		\centering
+		\caption{Bigramas más frecuentes en el texto sin filtro.}
+		\label{frecuencia_bigramas}
+		\begin{tabular}{l|l}
+			\hline
+			Bigrama & Frecuencia \\
+			\hline
+		  	in the  &   413 \\
+			to be    &  325 \\
+		 	of the   &  308 \\
+		 	it was   &  273 \\
+		 	to the   &  240 \\
+		 	and i    &  198 \\
+		 	on the   &  191 \\
+		 	i don't  &  174 \\
+		 	going to &  165 \\
+		 	was a    &  164 \\
+			\hline
+		\end{tabular}
+	\end{table}
 
+	En la figura \ref{bigrama_barplot} se observan los bigramas más comunes en el texto filtrado. Resalta el nombre de \textit{Green Gables}, lugar donde se desarrolla la mayoría de la trama de la novela y nombres de personajes como \textit{Miss Stacy,  Gilbert Blythe, Anne Shirley, Rubby Gillis,} entre otros.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.7]{bigrama.png}
+		\caption{Bigramas con mayor frecuencia en el texto filtrado.}
+		\label{bigrama_barplot}
+	\end{figure}
+	
 \bibliographystyle{plain}
 \bibliography{biblio}
 
