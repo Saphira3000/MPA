@@ -1,7 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
-\usepackage{graphicx, color}
+\usepackage{graphicx}
+\usepackage[small]{caption}
 \usepackage{subcaption}
 \usepackage[spanish]{babel}
 \usepackage{url}
@@ -28,46 +29,98 @@
 		Gabriela S\'anchez Y.\\
 		5064
 	\end{center}
-
-	En el presente trabajo se realiza un análisis del libro \textit{``Anne of Green Gables''} obtenido del sitio de \href{http://www.gutenberg.org/}{Project Gutenberg}. 
+ 
+	En el presente trabajo se analiza el tipo de distribuciones que pueden están presentes en el texto del libro \textit{``Anne of Green Gables''} \cite{anne} que puede obtenerse de manera gratuita en el sitio de \href{http://www.gutenberg.org/}{Project Gutenberg}.
 
 	\section{Introducción}
 	
-	El análisis del libro de texto se realiza con la ayuda del lenguaje de programación \textsc{R} versión 4.0.2 \cite{r}, haciendo uso de tres librerías: \texttt{gutenbergr} que permite acceder al texto plano del libro y, \texttt{tidytext} y \texttt{dplyr} que permiten la descomposición del texto.
+	El procesamiento del texto se realiza con la ayuda del lenguaje de programación \textsc{R} versión 4.0.2 \cite{r}, haciendo uso de distintas librerías:: \texttt{gutenbergr} que permite acceder al texto plano del libro y, \texttt{tidytext} y \texttt{dplyr} que permiten la descomposición del texto. 
+	
+	En el preprocesamiento se eliminan las líneas vacías, el índice y los guiones bajos cuando hay palabras con guiones bajos alrededor para indicar énfasis \cite{mpa_alberto}. Para tener un punto de comparación sobre lo que es propio del autor en la escritura de un texto se elige un cuento cuya fecha de publicación no se aleja mucho de la del libro base. En este caso se utiliza el libro \textit{Peter Pan} \cite{peterpan} que se descarga del mismo sitio \cite{pg}.
+	
+	El procedimiento realizado para el análisis puede encontrarse en el código \texttt{t3.R} \cite{mpa_gaby}.
 
-	Dicho análisis se basa en el estudio de las frecuencias de las palabras y letras del texto. El primer paso para poder proceder con el estudio es obtener el texto plano del libro, lo cual es posible mediante la función \texttt{gutenberg\_download}.  
+	\section{Distribuciones en el texto}
 	
-	El procedimiento realizado para el análisis puede encontrarse en el script \texttt{t2.R} \cite{mpa_gaby}.
+	En esta fase se descompone el texto en oraciones, es decir, se parte después de cada punto. La comparación se realiza a partir de la medición de la cantidad de palabras, y comas que hay en las oraciones de cada texto. Además se analiza la longitud de las palabras usadas.
+	
+	En la figura \ref{anne_peter} se puede observar una síntesis de cómo están distribuidos estos elementos en las oraciones de cada texto. En general, tienen un comportamiento similar. Se podría decir que la distribución de la cantidad de palabras por oración en ambos textos (figura \ref{ppo_anne} y \ref{ppo_peter}) y la distribución de la cantidad de comas por oración (figura \ref{cpo_anne} y \ref{cpo_peter}) es muy similar a una distribución geométrica. 
+	
+	\begin{figure}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_ppo_anne.png}
+			\caption{Palabras por oración en \em Anne of Green Gables}
+			\label{ppo_anne}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_ppo_peter.png}
+			\caption{Palabras por oración en \em Peter Pan}
+			\label{ppo_peter}
+		\end{subfigure}
+				\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_cpo_anne.png}
+			\caption{Comas por oración en \em Anne of Green Gables}
+			\label{cpo_anne}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_cpo_peter.png}
+			\caption{Comas por oración en \em Peter Pan}
+			\label{cpo_peter}
+		\end{subfigure}
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_tpalabras_anne.png}
+			\caption{Largo de palabras en \em Anne of Green Gables}
+			\label{tpalabras_anne}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{hist_tpalabras_peter.png}
+			\caption{Largo de palabras en \em Peter Pan}
+			\label{tpalabras_peter}
+		\end{subfigure}
+		\caption{Síntesis de la distribución de las oraciones en los textos.}
+		\label{anne_peter}
+	\end{figure}
 
-	\section{Letras}
+ 
 	
-	La descomposición del texto en caracteres se realiza con la función \texttt{unnest\_tokens}. Ya que es de interés únicamente la frecuencia de las letras, se eliminan todos los caracteres que no lo son. En este caso, el único caracter que no es una letra es ``$\mid$". 
+	\subsection{Experimentos de Bernoulli}
 	
-	Para mejorar la visualización, las frecuencias se ordenan en forma decreciente. De esta manera es posible observar que las primeras tres letras más usadas en el texto son \textit{e, t} y \textit{a}, mientras que las menos usadas son \textit{x, q} y \textit{z}, tal y como se muestra en la figura \ref{letras}.
+	Para esta fase se usa solo el texto de {\em Anne of Green Gables}. A partir de esa información se realizan distintos experimentos de Bernoulli que buscan imitar el comportamiento de tres distribuciones: geométrica, binomial y binomial negativa.
+	
+	La distribución geométrica muestra la distribución de la cantidad de repeticiones del experimento que fueron fracasos antes de obtener el primer éxito \cite{notas_mpa}. Para replicar este comportamiento se define que el éxito se obtiene cuando al elegir al azar una letra del texto esta es una ``e'', por lo tanto, si se obtiene cualquier otro caracter se considera un fracaso. Al repetir 10,000 veces el experimento se obtienen los resultados de la figura \ref{geom_e}. Por la construcción del experimento, es claro que el comportamiento sigue una distribución geométrica.
+	
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{geom_e.png}
+		\caption{Distribución geométrica.}
+		\label{geom_e}
+	\end{figure}
 
-	\section{Palabras}
+	El siguiente experimento contesta a la pregunta ¿cuántos intentos se necesitan para obtener siete veces el caracter ``t'', en una elección al azar?. Un éxito, para este experimento, se considera cuando en la elección se obtiene el caracter ``t''. Esta distribución se conoce como binomial negativa. En la figura \ref{bin_neg_t7} se muestran los resultados obtenidos al repetir 10,000 veces el experimento.
 	
-	La descomposición en letras no dice mucho acerca del texto por lo que se procede a realizar una descomposición en palabras. Para esto, nuevamente se usa la función \texttt{unnest\_tokens}.
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{bin_neg_t7.png}
+		\caption{Distribución binomial negativa.}
+		\label{bin_neg_t7}
+	\end{figure}
 	
-	Como segundo paso en este análisis, se realiza un filtrado: son eliminadas aquellas palabras que en inglés se conocen como \textit{stop words} (palabras vacías), ya que no serán útiles para el estudio \cite{textMining}. Son palabras muy comunes en el idioma que pueden eliminarse sin sacrificar el significado de una oración. En inglés algunos ejemplos de palabras vacías son \textit{at, the, is, of, to}.
+	La última situación considera un experimento de 30 intentos que se replica 1,000 veces. En cada réplica se cuenta la cantidad de veces que se elige al azar una palabra y ésta tiene una longitud menor o igual a cinco caracteres. La distribución obtenida de este experimento se muestra en la figura \ref{bin_5}. La construcción del experimento permite concluir que este comportamiento es el de una distribución binomial.
 	
-	Una vez hecho este filtro, se aplica otro que toma en cuenta únicamente las palabras con una frecuencia mayor a uno. En el cuadro \ref{frecuencia_palabras} se pueden observar las primeras 10 palabras más frecuentes. Estos resultados permiten inferir que \textit{Anne, Marilla, Diana} y \textit{Matthew} son personajes principales en la novela, siendo \textit{Anne} el principal ya que la frecuencia está muy por encima de los otros.
+	La distribución en la figura \ref{tpalabras_anne} indica que la mayoría de las palabras en el texto tiene una longitud menor o igual a cinco caracteres. De esta forma en el experimento de elegir 30 palabras al azar, se espera que la mayoría de ellas tenga esta restricción en la longitud es por esto que se observa el comportamiento de la figura \ref{bin_5}. 
 	
-	Continuando con las palabras más frecuentes, en la figura \ref{palabras_dec} se muestra un gráfico de barras que muestra la frecuencia de las 20 palabras siguientes en frecuencia a las del cuadro \ref{frecuencia_palabras}. Pueden observarse otros nombres como \textit{Gilbert y Jane} y, lo que parecen ser apellidos \textit{Lynde} y \textit{Barry}, por lo que podríamos decir que son personajes secundarios en la novela. 
-	
-	Una persona que ya ha leído el libro sabe que \textit{Barry} es el apellido de \textit{Diana}. Esto advierte que un análisis de palabras ``sueltas'' no permite inferir mucho acerca del contenido del texto, una mejor opción es considerar la frecuencia en que aparecen dos o más palabras juntas.
-	
-	Antes de proceder a analizar conjuntos de palabras, se examinan las palabras positivas y negativas más comunes de acuerdo al léxico \texttt{bing}, que es posible obtener a través de la función \texttt{get\_sentiments}. La figura \ref{palabras_pos-neg} muestra las 10 palabras más comunes positivas (figura \ref{palabras_positivas}) y negativas (figura \ref{palabras_negativas}). 
-	
-	En el gráfico de barras mostrado en la figura \ref{palabras_negativas} se puede apreciar que la palabra negativa con más frecuencia en el libro es \textit{miss}. Sin embargo, aquí se señala un problema. Se sabe que tanto en español como en inglés existen palabras homónimas, es decir, palabras cuya pronunciación o escritura es igual o similar pero que tienen diferente significado. En este caso, personas que ya han leído el libro, pueden advertir que el personaje principal se refiere a su profesora como \textit{Miss Stacy}, otro personaje relevante en la novela. por lo que no se garantiza que \textit{miss} en su connotación ``negativa'' realmente tenga una frecuencia más alta que las otras palabras mostradas en el gráfico.
-	
-	
-	Por último, se analiza la frecuencia en que aparecen las secuencias de dos palabras, también llamado bigrama. El análisis de los brigramas se realiza con los datos que previamente filtraron las palabras vacías, ya que si se omite ese paso, los resultados obtenidos muestran serán los que se muestran en el cuadro \ref{frecuencia_bigramas} y dicha información no aporta sobre el contenido del libro.
-	
-
-	En la figura \ref{bigrama_barplot} se observan los bigramas más comunes en el texto filtrado. Resalta el nombre de \textit{Green Gables}, lugar donde se desarrolla la mayoría de la trama de la novela y nombres de personajes como \textit{Miss Stacy,  Gilbert Blythe, Anne Shirley, Rubby Gillis,} entre otros.
-	
-
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.6]{bin_5.png}
+		\caption{Distribución binomial.}
+		\label{bin_5}
+	\end{figure}
 	
 \bibliographystyle{plain}
 \bibliography{biblio}

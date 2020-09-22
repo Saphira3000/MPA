@@ -89,8 +89,6 @@ head(bigrams, 10)
 bigrams_separated <- bigrams %>% separate(bigram, c("word1", "word2"), sep = " ")
 bigrams_filtered <- bigrams_separated %>% filter(!word1 %in% stop_words$word) %>% filter(!word2 %in% stop_words$word)
 bigrams_filtered <- bigrams_filtered %>% mutate(word1 = str_extract(word1, "[a-z']+")) %>% mutate(word2 = str_extract(word2, "[a-z']+"))
-#bigram_counts <- bigrams_filtered %>% count(word1, word2, sort = T)
-#head(bigram_counts, 10)
 
 bigrams_united <- bigrams_filtered %>% unite(bigram, word1, word2, sep = " ")
 head(bigrams_united, 10)
