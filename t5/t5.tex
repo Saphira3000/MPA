@@ -153,8 +153,8 @@
 	
 	Siendo $u_1$ y $u_2$ dos números independientes obtenidos de una distribución uniforme, la generación mediante el método se realiza con las ecuaciones (\ref{z0}) y (\ref{z1}).
 	\begin{eqnarray}
-	z_0 &=& \sqrt{-2 \ln u_1} \cdot \cos(2\pi u_2), \label{z0} \\
-	z_1 &=& \sqrt{-2 \ln u_1} \cdot \sin(2\pi u_2). \label{z1}
+	z_0 &=& \left( \sqrt{-2 \ln u_1} \cdot \cos(2\pi u_2)\right) \sigma + \mu , \label{z0} \\
+	z_1 &=& \left(  \sqrt{-2 \ln u_1} \cdot \sin(2\pi u_2) \right) \sigma + \mu . \label{z1}
 	\end{eqnarray} 
 
 	Un primer análisis estudia si usar sólo uno de estos valores genera diferencias en los datos. La figura \ref{uno_ambos} muestra las diferentes distribuciones que se generan con el método al usar sólo uno de los valores y ambos. Las tres distribuciones pasan la prueba de normalidad de {\em Shapiro} con un $p$-valor de 0.5854184, 0.1078563, 0.2750796, usando sólo $z_0$, $z_1$ y ambos, respectivamente.
