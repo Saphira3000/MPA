@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx, amsmath, listings, xcolor}
+\usepackage[small]{caption}
+\usepackage{subcaption}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\setlength{\parskip}{\baselineskip}
+\graphicspath{ {images/} }
+\spanishdecimal{.}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,     
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+
+\begin{document}
+
+	\thispagestyle{empty}
+
+	\begin{center}
+		{\Large \bf Teorema de Bayes}\\
+		Gabriela S\'anchez Y.\\
+		5064
+	\end{center}
+  
+	\section{Teorema de Bayes}
+	
+	Sean $H_1, H_2, \ldots, H_m$ un conjunto de eventos disjuntos por pares llamados {\em hipótesis}, tales que el espacio muestral satisface que $\Omega = H_1 \cup H_2 \cup \cdots \cup H_m$. Además sea $E$ un evento llamado {\em evidencia} que proporciona información sobre cuál hipótesis es correcta. 
+	
+	Antes de recibir la evidencia se tiene el conjunto de probabilidades previas $P(H_1), \ldots, P(H_m)$ para las hipótesis. Si se conoce la hipótesis correcta entonces se conoce $P(E\mid H_i)$ para todo $i$. Es de interés calcular las probabilidades para las hipótesis dada la evidencia. Es decir, se desea encontrar las probabilidades posteriores. Estas probabilidades se encuentran mediante la fórmula de Bayes \cite{prob2003} expresada en la ecuación (\ref{tbayes})
+	\begin{equation}
+	P(H_i \mid E) = \frac{P(H_i)P(E\mid H_i)}{\sum_{k=1}^{m} P(H_k)P(E\mid H_k)}.
+	\label{tbayes}
+	\end{equation} 
+	
+	En este trabajo se desea analizar esta fórmula para el caso específico de pruebas para la detección de alguna enfermedad. En el contexto del problema se tienen dos hipótesis: estar enfermo que se denotará como $C^+$ y no estar enfermo denotado por $C^-$. La evidencia, será el resultado de la prueba, {\em positivo} o {\em negativo}. 
+	
+	Si se desea saber cuál es la probabilidad de que una persona realmente esté enferma dado que el resultado de la prueba es positivo (también llamado {\em valor predictivo positivo}), se reescribe la fórmula (\ref{tbayes}) y se obtiene la ecuación (\ref{vpp})
+	\begin{equation}
+	P(C^+ \mid +) = \frac{P(C^+)P(+ \mid C^+)}{P(C^+)P(+ \mid C^+) + P(C^-) P(+ \mid C^-)},
+	\label{vpp}
+	\end{equation}
+	donde $P(+ \mid C^+)$ indica la probabilidad de que la prueba dé un resultado positivo cuando la persona tiene la enfermedad, es decir, la probabilidad de obtener un {\em verdadero positivo} y, $P(+ \mid C^-)$ indica la probabilidad de que una persona sin la enfermedad obtenga un resultado positivo en la prueba, es decir, la probabilidad de obtener un {\em falso positivo}.
+	
+	De manera análoga, la probabilidad de que una persona no esté enferma dado que el resultado de la prueba es negativo, ({\em valor predictivo negativo}) se puede obtener mediante la ecuación (\ref{vpn})
+	\begin{equation}
+	P(C^- \mid -) = \frac{P(C^-)P(- \mid C^-)}{P(C^-)P(+ \mid C^-) + P(C^+) P(- \mid C^+)},
+	\label{vpn}
+	\end{equation}
+	donde $P(- \mid C^-)$ es la probabilidad de que una persona sin la enfermedad obtenga un resultado negativo en la prueba ({\em verdadero negativo}) y $P(- \mid C^+)$ es la probabilidad de que una persona enferma obtenga un resultado negativo en la prueba ({\em falso negativo}).
+	
+	Las probabilidades condicionadas $P(+ \mid C^+)$ y $P(- \mid C^-)$ expresan la {\em sensibilidad} (capacidad de la prueba para detectar la enfermedad) y {\em especificidad} de la prueba (capacidad de la prueba de detectar a los individuos sanos) \cite{lect3}. De manera que aún se pueden reescribir \cite{regalado2009} las ecuaciones (\ref{vpp}) y (\ref{vpn}) como (\ref{vpp2}) y (\ref{vpn2})
+	\begin{equation}
+	P(C^+ \mid +) = \frac{(\text{prevalencia}) \cdot \text{sensibilidad}}{(\text{prevalencia}) \cdot \text{sensibilidad} + (1-\text{prevalencia})\cdot(1- \text{especificidad})}, 
+	\label{vpp2}
+	\end{equation}
+	\begin{equation}
+	P(C^- \mid -) = \frac{(1- \text{prevalencia}) \cdot \text{especificidad}}{(1- \text{prevalencia}) \cdot \text{especificidad} + \text{prevalencia} \cdot  (1- \text{sensibilidad})}. 
+	\label{vpn2}
+	\end{equation} 
+	
+	Además se puede determinar la {\em precisión} y {\em exactitud} \cite{lect3} de la prueba mediante las ecuaciones (\ref{presicion}) y (\ref{exactitud})
+	\begin{equation}
+	\text{Precisión} = \frac{\text{verdaderos positivos}}{\text{verdaderos positivos} + \text{falsos positivos}}, 
+	\label{presicion}
+	%\frac{P(+ \mid C^+)}{P(+ \mid C^+) + P(+ \mid C^-)} = 
+	\end{equation}
+	\begin{equation}
+	\text{Exactitud} = \frac{\text{verdaderos positivos} + \text{verdaderos negativos}}{\text{total de resultados}}.
+	\label{exactitud} 
+	%\frac{P(- \mid C^-)}{P(- \mid C^-) + P(+ \mid C^-)} = 
+	\end{equation}
+	
+	\section{Pruebas Covid-19}
+	
+	Existen dos diferentes tipos de pruebas para la detección del virus SARS-CoV-2, causante de la enfermedad Covid-19: las pruebas de diagnóstico, como la prueba RT-PCR que diagnostica una infección activa de coronavirus y las pruebas de anticuerpos, que muestran si una persona ha sido infectada por el coronavirus en el pasado \cite{fda}.
+	
+	Utilizando sólo la información de la prueba RT-PCR, se desea analizar las implicaciones del teorema de Bayes para el caso específico de la detección de Covid-19. Usando la notación descrita previamente, $C^+$ representará la población enferma y $C^-$ la población sana. De esta manera, conociendo la especificidad y sensibilidad de esta prueba, se pueden determinar el valor predictivo positivo y negativo.
+	
+	No se encontró un valor específico para la especificidad de la prueba sin embargo se estima que es muy cercana al 100\%. Para fines prácticos se fijará en un 99\%. Tampoco se encontró un valor para la sensibilidad y el rango de valores es variado además de que depende del lugar de la muestra y de la carga viral. De acuerdo a la información de diversas fuentes \cite{chan2020, good2020}, este valor oscila entre 31\% -- 70\%. 
+	
+	Con esta información y los casos de Covid-19 en el estado de Michoacán \cite{michoacan} se determinarán los valores predictivos positivo y negativo.
+	
+	La información proporcionada al 26 de octubre indica que de un total de 57050 pruebas realizadas, 24,499 han resultado positivas y 32,551 han resultado negativas. Si la población del estado es alrededor de 5 millones, la prevalencia será entonces de un 0.049. Usando estos datos y considerando una especificidad del 70\%, se calcula el valor predictivo positivo y negativo a partir de las ecuaciones (\ref{vpp2}) y (\ref{vpn2}): 
+	\begin{equation*}
+	P(C^+ \mid +) = \frac{(0.049) \cdot (0.7)}{(0.049) \cdot (0.7) + (0.951)\cdot(0.01)} = 0.78, 
+	\end{equation*}
+	\begin{equation*}
+	P(C^- \mid -) = \frac{(0.951) \cdot (0.99)}{(0.951) \cdot (0.99) + (0.049) \cdot  (0.3)} = 0.98. 
+	\end{equation*} 
+	
+	Lo que está indicando el primer resultado es la probabilidad de que una persona que haya dado positivo en la prueba realmente esté enferma, mientras que el segundo resultado indica la probabilidad de que una persona que haya dado negativo en la prueba realmente esté sana.
+	
+	Note que según los resultados obtenidos, la probabilidad de obtener un falso negativo $[1-P(C^- \mid -)] = 0.02$ es baja, mientras que la probabilidad de obtener un falso positivo es más alta $[1-P(C^- \mid -)] = 0.22$.
+%\nocite{*}
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
+
+%%@article{wu2020single,
+%title={Single-cell RNA expression profiling of ACE2, the putative receptor of Wuhan 2019-nCoV, in the nasal tissue},
+%author={Wu, Chao and Zheng, Shufa and Chen, Yu and Zheng, Min},
+%journal={MedRxiv},
+%year={2020},
+%publisher={Cold Spring Harbor Laboratory Press}
+%}
