@@ -343,6 +343,19 @@
 
 	Bearing in mind that $\lambda=0.05$ the expected lifetime of the light bulb is $E[T] = 40$ hours and its variance $V[T] = 800$ hours.
 	
+	{\bf Exercise 12, page 280}
+	
+	{\em Find $E[X^Y]$, where $X$ and $Y$ are independent random variables which are uniform on [0, 1]. Then verify your answer by simulation.}
+	
+	\begin{eqnarray*}
+	E[X^Y] &=& \int_{0}^{1} \int_{0}^{1} x^y dx dy \\
+	&=& \int_{0}^{1}  \left. \left[ \frac{x^{y+1}}{y+1} \right] \right|_{0}^{1} dy \\
+	&=& \int_{0}^{1}  \left( \frac{1^{y+1}}{y+1} - \frac{0^{y+1}}{y+1} \right) dy \\
+	&=& \int_{0}^{1}  \left( \frac{1}{y+1} \right) dy \\
+	&=& \left. \ln (y+1) \right|_{0}^{1}\\
+	&=& \ln(2) \approx 0.6931
+	\end{eqnarray*}
+	
 \bibliographystyle{plain}
 \bibliography{biblio}
 
