@@ -130,19 +130,22 @@ dev.off()
 # e3, p278 light bulb
 d = function(t) {
   l = 0.05
-  return(l^2*t*exp(-l*t))
+  return((l**2)*t*exp(-l*t))
 }
 
-Fun = numeric()
-for(i in 1:1500) {
-  Fun = c(Fun, d(i))
-}
-
+t = runif(100000, 0, 2500)
 meanlb = numeric()
 varlb = numeric()
 for (r in 1:100) {
-  meanlb = c(meanlb, sum(sample(Fun, 500)))
-  varlb = c(varlb, var(sample(Fun, 500)))
+  meanlb = c(meanlb, mean(sample(t, 500, prob = d(t))))
+  varlb = c(varlb, var(sample(t, 500, prob = d(t))))
 }
+png("lb_mean.png", width=2000, height=1600, res=300)
+par(mar=c(3,4,1,1))
+hist(meanlb, main = "", ylab = "Frecuencia", xlab = "", col = "mistyrose")
+dev.off()
 
-
+png("lb_var.png", width=2000, height=1600, res=300)
+par(mar=c(3,4,1,1))
+hist(varlb, main = "", ylab = "Frecuencia", xlab = "", col = "mistyrose")
+dev.off()

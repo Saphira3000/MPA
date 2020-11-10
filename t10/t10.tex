@@ -125,11 +125,30 @@
 %	
 %	{\em A multiple choice exam is given. A problem has four possible answers, and exactly one answer is correct. The student is allowed to choose a subset of the four possible answers as his answer. If his chosen subset contains the correct answer, the student receives three points, but he loses one point for each wrong answer in his chosen subset. Show that if he just guesses a subset uniformly and randomly his expected score is zero.}
 	
-%	{\bf Ejercicio 3, página 278}
-%	
-%	{\em The lifetime, measure in hours, of the ACME super light bulb is a random variable T with density function \(f_T (t) = \lambda^2 te^{- \lambda t}\), where \(\lambda = 0.05\). What is the expected lifetime of this light bulb? What is its variance?}
+	{\bf Ejercicio 3, página 278}
 	
+	{\em The lifetime, measure in hours, of the ACME super light bulb is a random variable T with density function \(f_T (t) = \lambda^2 te^{- \lambda t}\), where \(\lambda = 0.05\). What is the expected lifetime of this light bulb? What is its variance?}
 	
+	La simulación para este ejercicio consiste en obtener cien lotes de 500 bombillas cada uno. La vida de cada una de estas bombillas debe ser tal que siga la distribución de densidad $f_T (t) = \lambda^2 te^{- \lambda t}$. Para obtener un aproximado al valor esperado de la vida útil y la varianza, se calcula el promedio de vida de las bombillas y la varianza en cada lote, respectivamente.
+	
+	La figura \ref{lb} muestra los resultados obtenidos. En la figura \ref{lb-mean} se muestra un histograma con las frecuencias en el promedio de vida útil en los distintos lotes, noté que en su mayoría se encuentran entre 39 y 42, bastante cercanos al valor exacto de 40. Por su parte, la figura \ref{lb-var} muestra que la varianza se encuentra en su mayoría entre 800 y 900. Recuerde que el valor analítico de la varianza es de 800, por lo que la simulación puede ayudar a respaldar dicho resultado.
+	
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{lb_mean.png}
+			\caption{Media}
+			\label{lb-mean}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{lb_var.png}
+			\caption{Varianza}
+			\label{lb-var}
+		\end{subfigure}
+	\caption{Media y varianza de la vida útil de la bombilla.}
+	\label{lb}
+	\end{figure}
 	
 	
 \bibliographystyle{plain}
