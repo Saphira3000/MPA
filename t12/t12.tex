@@ -40,11 +40,10 @@
 			\item $p_0 = 1 / 3, \, p_1 = 0, \, p_2 = 2 / 3$.
 			\item $p_j = 1 / 2^{j + 1}$, for $j = 0, 1, 2, \ldots$
 			\item $p_j = (1 / 3) (2/3)^j$, for $j = 0, 1, 2, \ldots$
-			\item $p_j = e^{-2} 2^j / j!$, for $j = 0, 1, 2, \ldots$ (estimate $d$ nummerically).
+			\item $p_j = (e^{-2} 2^j) / j!$, for $j = 0, 1, 2, \ldots$ (estimate $d$ nummerically).
 		\end{enumerate}
 	}
 
-	%To solve this exercise, it is important recall some concepts first. Let $d$ the probability that the process will ultimately die out. By 
 	Let $d$ the probability that the process will ultimately die out. Theorem 10.2 from page 380 \cite{prob2003} says that if the mean number $m$ of offspring produced by a single parent is $\leq 1$, then $d = 1$ and the process dies out with probability 1. But if $m > 1$ then $d < 1$ and the process dies out with probability $d$.
 	
 	In the particular case of a), b) and c), the mean number $m$ of offspring produced by a single parent is $m=p_1 + 2p_2 = 1-p_0+p_2$. If $m > 1$, $d$ can be easily calculated by $d= p_0/p_2$. 
@@ -86,7 +85,35 @@
 	&=& \frac{1}{2 - z}.
 	\end{eqnarray*}
 
-	Recall that a geometric serie 
+	To get this result it has been used that $1+r+r^2 + \ldots  = \frac{1}{1-r}$. Then  \begin{eqnarray*}
+		h'(z) &=& \frac{d}{dz} \left( \frac{1}{2 - z} \right) \\
+		&=& \frac{d}{dz} \left( 2 - z \right)^{-1} \quad {\text{\small chain rule}} \\
+		&=& \frac{1}{(2 - z)^2}, 
+	\end{eqnarray*}
+	and $m = h'(1) = \frac{1}{(2 - 1)^2} = 1 \leq 1$, therefore $d = 1$.
+	
+	\noindent e) $p_j = (1 / 3) (2/3)^j$, for $j = 0, 1, 2, \ldots$
+	
+	The ordinary generating function is 
+	\begin{eqnarray*}
+		h(z) &=&\frac{1}{3} \left(\frac{2}{3}\right)^{0} + \frac{1}{3} \left(\frac{2}{3}\right)^1 z + \frac{1}{3} \left(\frac{2}{3}\right)^2 z^2 + \frac{1}{3} \left(\frac{2}{3}\right)^3 z^3 + \ldots \\
+		&=& \frac{1}{3} \left[1 + \left(\frac{2}{3}z\right)^1 + \left(\frac{2}{3}z\right)^2 + \ldots\right] \\
+		&=& \frac{1}{3} \left(\frac{1}{1 - \frac{2}{3} z}\right)\\
+		&=& \frac{1}{3 - 2z}.
+	\end{eqnarray*}
+
+	Then, one can calculate $h'(z)$:
+	\begin{eqnarray*}
+		h'(z) &=& \frac{d}{dz} \left( \frac{1}{3 - 2z} \right) \\
+		&=& \frac{d}{dz} \left( 3 - 2z \right)^{-1} \quad \text{\small chain rule}\\
+		&=& \frac{2}{(3 - 2z)^2}.
+		\end{eqnarray*}
+	from which $m = h'(1) = \frac{2}{(3 - 2)^2} = 2$ and $d < 1$. To find the probability $d$ we need to solve the equation $z = h(z)$. Using the previous result found for $h(z)$ we have
+	\begin{eqnarray*}
+	2z^2 - 3z + 1 = 0.
+	\end{eqnarray*}
+	The roots of this equation are $z_1 = 1$ and $z_2 = 1/2$. Therefore, the probability $d$ that the process eventually dies out is $0.5$. 
+
 	
 	{\bf Excercise 3, page 392}
 	
