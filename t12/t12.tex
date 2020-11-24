@@ -1,0 +1,257 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{graphicx, amsmath}
+\usepackage[small]{caption}
+\usepackage{subcaption, enumerate}
+\usepackage{url}
+\setlength{\parskip}{\baselineskip}
+%\setlength{\parskip}{0.3cm}
+\graphicspath{ {images/} }
+\allowdisplaybreaks
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,     
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+
+\begin{document}
+
+	\thispagestyle{empty}
+
+	\begin{center}
+		{\Large \bf Generating functions}\\
+		Gabriela S\'anchez Y.\\
+		5064
+	\end{center}
+  
+	In this activity some exercises of the book Introduction to Probability \cite{prob2003} are solved.
+	
+	{\bf Exercise 1, page 392}
+	
+	{\em Let $Z_1, Z_2, \ldots, Z_n$ describe a branching process in which each parent has $j$ offspring with pro\-ba\-bi\-li\-ty $p_j$. Find the probability $d$ that the process eventually dies out if 
+		\begin{enumerate}[a)]
+			\item $p_0 = 1 / 2, \, p_1 = 1 / 4, \, p_2 = 1 / 4$.
+			\item $p_0 = 1 / 3, \, p_1 = 1 / 3, \, p_2 = 1 / 3$.
+			\item $p_0 = 1 / 3, \, p_1 = 0, \, p_2 = 2 / 3$.
+			\item $p_j = 1 / 2^{j + 1}$, for $j = 0, 1, 2, \ldots$
+			\item $p_j = (1 / 3) (2/3)^j$, for $j = 0, 1, 2, \ldots$
+			\item $p_j = e^{-2} 2^j / j!$, for $j = 0, 1, 2, \ldots$ (estimate $d$ nummerically).
+		\end{enumerate}
+	}
+
+	%To solve this exercise, it is important recall some concepts first. Let $d$ the probability that the process will ultimately die out. By 
+	Let $d$ the probability that the process will ultimately die out. Theorem 10.2 from page 380 \cite{prob2003} says that if the mean number $m$ of offspring produced by a single parent is $\leq 1$, then $d = 1$ and the process dies out with probability 1. But if $m > 1$ then $d < 1$ and the process dies out with probability $d$.
+	
+	In the particular case of a), b) and c), the mean number $m$ of offspring produced by a single parent is $m=p_1 + 2p_2 = 1-p_0+p_2$. If $m > 1$, $d$ can be easily calculated by $d= p_0/p_2$. 
+	
+	\noindent a) $p_0 = 1 / 2, \, p_1 = 1 / 4, \, p_2 = 1 / 4$
+	
+	The mean number $m$ of offspring produced by a single parent is 
+	$$m = \frac{1}{4} + 2\left( \frac{1}{4} \right)= \frac{3}{4} < 1.$$
+	Then, by theorem 10.2, follows that the process dies out with probability 1.
+	
+	\noindent b) $p_0 = 1 / 3, \, p_1 = 1 / 3, \, p_2 = 1 / 3$
+	
+	For this exercise $m = \frac{1}{3} + 2\left(\frac{1}{3} \right) = 1$. Therefore the process dies out with probability 1.
+	
+	\noindent c) $p_0 = 1 / 3, \, p_1 = 0, \, p_2 = 2 / 3$
+	
+	The mean number $m$ of offspring produced by a single parent in this case is
+	\begin{equation*}
+	m = 0 + 2\left( \frac{2}{3} \right) = \frac{4}{3} > 1.
+	\end{equation*}
+	The process dies out with probability $d= p_0/p_2 = \frac{1}{3}/\frac{2}{3} = 0.5$.
+	
+	To solve d) and e) it is neccesary to remember that $h(z)$, the ordinary generating function for the $p_i$, is 
+	$$h(z) = p_0 + p_1 z + p_2 z^2 + \cdots $$
+	and $m=h'(1)$. If $m\leq 1$, the process will surely die out and $d = 1$. To find the
+	probability $d$ when $m > 1$ one must find a root $d < 1$ of the equation
+	\begin{equation*}
+	z = h(z).
+	\end{equation*}
+	
+	\noindent d) $p_j = 1 / 2^{j + 1}$, for $j = 0, 1, 2, \ldots$
+	
+	The ordinary generating function of the problem is 
+	\begin{eqnarray*}
+	h(z) &=& \frac{1}{2} + \frac{1}{2^2}z + \frac{1}{2^3}z^2 + \ldots \\
+	&=& \frac{1}{2} \left( 1 + \frac{1}{2} z + \frac{1}{2^2}z^2 + \ldots \right) \\
+	&=& \frac{1}{2} \left[ \left(\frac{1}{2}z\right)^0 + \left(\frac{1}{2}z\right)^1 + \left(\frac{1}{2}z\right)^2 + \ldots \right] \\
+	&=& \frac{1}{2} \left(\frac{1}{1 - \frac{1}{2} z}\right)\\
+	&=& \frac{1}{2 - z}.
+	\end{eqnarray*}
+
+	Recall that a geometric serie 
+	
+	{\bf Excercise 3, page 392}
+	
+	{\em In the chain letter problem (see Example 10.14) find your expected profit if {\setlength{\parskip}{0cm}
+			\begin{enumerate}[a)]
+				\item $p_0 = 1/2, \, p_1 = 0, \, p_2 = 1/2$.
+				\item $p_0 = 1/6, \, p_1 = 1/2, \, p_2 = 1/3$.
+			\end{enumerate}
+			Show that if $p_0 > 1 / 2$, you cannot expect to make a profit.}
+	}
+	
+	The expected profit of the chain letter problem can be found by the expression $50m + 50 m^{12},$ where $m = p_1 + 2p_2$.
+	
+	\noindent a) $p_0 = 1/2, \, p_1 = 0, \, p_2 = 1/2$.
+
+	In this particular case $m = 0 + 2\left(\frac{1}{2}\right) = 1$. Then, the expected profit is: $50(1+1^{12})-100 =0$.
+
+	\noindent b) $p_0 = 1/6, \, p_1 = 1/2, \, p_2 = 1/3$.
+	
+	For this problem $m = \frac{1}{2}+ 2\left(\frac{1}{3}\right) = \frac{7}{6}$ and the expected profit is $$50 \left[ \frac{7}{6}+\left(\frac{7}{6} \right)^{12} \right]-100 \approx 376.26 - 100 = 276.26.$$
+	
+	
+
+	{\bf Exercise 1, page 401}
+	
+	{\em Let $X$ be a continuous random variable with values in $[0,2]$ and density $f_X$. Find the moment generating function $g(t)$ for $X$ if
+		\begin{enumerate}[a)]
+			\item $f_X(x) = \frac{1}{2}$.
+			\item $f_X (x) = \frac{1}{2}x$.
+			\item $f_X (x) = 1 - \frac{1}{2}x$.
+			\item $f_X (x) = |1 - x|$.
+			\item $f_X (x) = \frac{3}{8}x^2$.
+		\end{enumerate}
+	}
+	
+	The {\em moment generating function $g(t)$} for $X$ is define by Equation (\ref{mgf})
+	\begin{equation}
+	g(t) = \int_{-\infty}^{\infty} e^{tx} f_X(x) \, dx.
+	\label{mgf}
+	\end{equation}
+	
+	The values of the variable $X$ are in the interval $[0,2]$, therefore the moment generating funcion will be define by the integral in Equation (\ref{mgf_exercise}) 
+	\begin{equation}
+		g(t) = \int_{0}^{2} e^{tx} f_X(x) \, dx.
+	\label{mgf_exercise}
+	\end{equation}
+	
+	\noindent a) $f_X(x) = \frac{1}{2}$.
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} \left(\frac{1}{2}\right)\, dx \\
+		&=& \frac{1}{2} \int_{0}^{2} e^{tx} \, dx \\
+		&=& \frac{1}{2} \left. \left[ \frac{1}{t} \cdot e^{tx} \right] \right|_{0}^{2} \\
+		&=& \frac{1}{2}	\cdot \frac{e^{2t}-1}{t}.
+	\end{eqnarray*}
+
+    \noindent b) $f_X(x) = \frac{1}{2}x$.
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} \left(\frac{1}{2} x \right)\, dx \\
+		&=& \frac{1}{2} \int_{0}^{2} xe^{tx} \, dx \hspace{3cm} \text{i.b.p} \\
+		&=& \frac{1}{2} \left. \left[ \frac{x}{t} \cdot e^{tx} - \frac{1}{t^2} \cdot e^{tx}\right] \right|_{0}^{2} \\
+		&=& \frac{1}{2} \cdot \frac{2te^{2t} - e^{2t} + 1}{t^2}.
+	\end{eqnarray*}
+
+	\noindent c) $f_X (x) = 1 - \frac{1}{2}x$.
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} \left( 1 - \frac{1}{2}x \right)\, dx \\
+		&=& \int_{0}^{2} e^{tx} \, dx - \int_{0}^{2} e^{tx} \left(\frac{1}{2} x \right)\, dx \\
+		&=& \int_{0}^{2} e^{tx} \, dx - \frac{1}{2} \int_{0}^{2} xe^{tx} \, dx 
+	\end{eqnarray*}
+
+	Note that these integrals were already calculated in a) and b), then
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} \, dx - \frac{1}{2} \int_{0}^{2} xe^{tx} \, dx \\
+		&=& \frac{e^{2t}-1}{t} - \frac{1}{2} \cdot \frac{2te^{2t} - e^{2t} + 1}{t^2} \\
+		&=& \frac{3te^{2t} - 3t - 2te^{2t} + e^{2t} - 1}{2t^2} \\
+		&=& \frac{e^{2t} - 2t + 1}{2t^2}.
+	\end{eqnarray*}
+
+	\noindent d) $f_X (x) = |1 - x|$.
+
+	Following the definition of absolute value, the density function $f_X$ can be define by Equation (\ref{absval})
+	\begin{equation}
+	f_X(x)= \left\{ \begin{array}{lcc}
+	1-x, &   \text{if}  & x \leq 1 \\
+	-1+x, &  \text{if}  & x > 1.
+	\end{array}
+	\right.
+	\label{absval}
+	\end{equation}
+	Therefore the moment generating function will be define by %the following integral
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} |1 - x|\, dx \\
+		&=& \int_{0}^{1} e^{tx}(1-x) \, dx + \int_{1}^{2} e^{tx} (-1+x) \, dx \\
+		&=& \int_{0}^{1} e^{tx} \, dx - \int_{0}^{1} xe^{tx}\, dx -  \int_{1}^{2} e^{tx} \, dx + \int_{1}^{2} xe^{tx}\, dx \\
+		&=& \left. \left[\frac{1}{t} e^{tx}\right] \right|_{0}^{1} - \left. \left[ \frac{x}{t} \cdot e^{tx} - \frac{1}{t^2} \cdot e^{tx}\right] \right|_{0}^{1} - \left. \left[\frac{1}{t} e^{tx}\right] \right|_{1}^{2} + \left. \left[ \frac{x}{t} \cdot e^{tx} - \frac{1}{t^2} \cdot e^{tx}\right] \right|_{1}^{2} \\
+		&=& \frac{1}{t} e^{2t} - \frac{1}{t^2}e^{2t} + \frac{2}{t^2} e^t - \frac{1}{t^2} - \frac{1}{t}. 
+	\end{eqnarray*}
+	
+	\noindent e) $f_X (x) = \frac{3}{8}x^2$.  
+	\begin{eqnarray*}
+		g(t) &=& \int_{0}^{2} e^{tx} \left(\frac{3}{8}x^2 \right)\, dx \\
+		&=& \frac{3}{8} \int_{0}^{2} x^2e^{tx} \, dx.
+	\end{eqnarray*}
+
+	Integrating by parts twice, the following result is obtained
+	\begin{eqnarray*}
+		g(t) &=& \frac{3}{8} \int_{0}^{2} x^2e^{tx} \, dx\\
+		&=& \frac{3}{8} \left. \left[e^{tx} \left( \frac{x^2}{t} - \frac{2x}{t^2} + \frac{2}{t^3}\right)\right] \right|_0^2 \\
+		&=& \frac{3}{8} \left[e^{2x} \left( \frac{4t^2-4t+2}{t^3} + \frac{2}{t^3}\right)\right].
+	\end{eqnarray*}
+
+	{\bf Exercise 6, page 402}
+	
+	{\em Let $X$ be a continuous random variable whose characteristic function $k_X (\tau)$ is $k_X(\tau) = e^{-|\tau|}$, $-\infty < \tau < \infty$. Show directly that the density $f_X$ of $X$ is
+	\begin{equation*}
+		f_X(x) = \frac{1}{\pi (1+x^2)}.
+	\end{equation*}
+	}
+
+	Having the characteristic function $k_X$, it is possible to determine the density function $f_X$ by Equation (\ref{density_function})
+	\begin{equation}
+	f_X(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-i \tau x} k_X(\tau) \, d\tau.
+	\label{density_function}
+	\end{equation}
+	
+	The characteristic function of the problem is define by an absolute value, therefore
+	\begin{equation}
+	k_X(\tau)= \left\{ \begin{array}{lcc}
+	-\tau, &   \text{if}  & \tau \geq 0 \\
+	\tau, &  \text{if}  & \tau < 0.
+	\end{array}
+	\right.
+	\label{char_func}
+	\end{equation}
+	
+	Using this result, the density function $f_X$ will be
+	\begin{eqnarray*}
+	f_{X}{(x)} &=& \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-ix\tau} e^{-|\tau|}  \, d\tau \\
+	&=& \frac{1}{2\pi} \left( \int_{-\infty}^{0}e^{-ix\tau} e^{\tau}\, d\tau \right) + \frac{1}{2\pi} \left( \int_{0}^{\infty}e^{-ix\tau} e^{-\tau}\, d\tau \right) \\ 
+	&=& \frac{1}{2\pi} \left( \int_{-\infty}^{0}e^{\tau(1-ix)} \, d\tau \right) + \frac{1}{2\pi} \left( \int_{0}^{\infty}e^{-\tau(1+ix)} \, d\tau \right) \\ 
+	&=& \frac{1}{2\pi} \lim_{R \rightarrow \infty} \left( \int_{-R}^{0} e^{\tau(1-ix)} \, d\tau \right) +  \frac{1}{2\pi} \lim_{R \rightarrow \infty} \left( \int_{0}^{R}   e^{-\tau(1+ix)} \, d\tau \right) \\ 
+	&=& \frac{1}{2\pi} \lim_{R \rightarrow \infty} \left.\left[ \left( \frac{1}{1-ix}\right) e^{\tau(1-ix)} \right] \right|_{-R}^0 +  \frac{1}{2\pi} \lim_{R \rightarrow \infty} \left.\left[ \left( -\frac{1}{1+ix}\right) e^{-\tau(1+ix)} \right] \right|_{0}^R \\ 
+	&=& \frac{1}{2\pi} \left( \frac{1}{1-ix} + \frac{1}{ix+1} \right) \\ 
+	&=& \frac{1}{2\pi} \cdot \frac{1+ix+1-ix}{(1-ix)(1+ix)} \\ 
+	&=& \frac{1}{2\pi} \cdot \frac{2}{1-i^2x^2}  \\ 
+	&=& \frac{1}{\pi(1+x^2)}.
+	\end{eqnarray*}
+	
+	
+	{\bf Exercise 10, page 403}
+	
+	{\em Let $X_1, X_2, \ldots, X_n$ be an independent trials process with density
+	\begin{equation*}
+		f(x) = \frac{1}{2}e^{-|x|}, \quad -\infty < x < \infty.
+	\end{equation*} \setlength{\parskip}{0cm}
+	\begin{enumerate}[a)]
+		\item Find the mean and variance of $f(x)$.
+		\item Find the moment generating function for $X_1, S_n, A_n$, and $S_n^*$.
+		\item What can you say about the moment generating function of $S_n^*$ as $n \rightarrow \infty$?
+		\item What can you say about the moment generating function of $A_n$ as $n \rightarrow \infty$?
+	\end{enumerate}
+	}
+	
+	
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
