@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{graphicx, amsmath}
+\usepackage[small]{caption}
+\usepackage{subcaption, enumerate}
+\usepackage{url}
+\setlength{\parskip}{\baselineskip}
+%\setlength{\parskip}{0.3cm}
+\graphicspath{ {images/} }
+\allowdisplaybreaks
+
+\spanishdecimal{.}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,     
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+\newtheorem{theorem}{Teorema}
+
+
+\begin{document}
+
+	\thispagestyle{empty}
+
+	\begin{center}
+		{\Large \bf Ley de los grandes números}\\
+		Gabriela S\'anchez Y.\\
+		5064
+	\end{center}
+  
+  	\section{Ley de los grandes números}
+  	
+	Existen dos versiones de la ley de los grandes números, la ley débil y la ley fuerte. Ambas se establecen en los siguientes teoremas.
+	
+	\begin{theorem}[Ley débil de los grandes números]
+		Sea $X_1, X_2, \ldots, X_n$ una secuencia de variables aleatorias independientes e idénticamente distribuidas, cada una con una media $E[X_i] = \mu$ y desviación estándar $\sigma$. Se define $\bar{X_n} = \frac{X_1 + X_2 + \cdots + X_n}{n}$. Para todo $\epsilon > 0$ se tiene que 
+		\begin{equation*}
+		\lim_{n \rightarrow \infty} P(\mid \bar{X_n} - \mu| > \epsilon) = 0.
+		\end{equation*}
+	\end{theorem}
+
+	Note que $\bar{X_n}$ es un promedio de los resultados individuales, es por esto que la ley de los grandes números es a veces llamada {\em ley de los promedios}.
+	
+	En otras palabras, la ley de los grandes números dice que mientras más se repita un experimento aleatorio el promedio de los resultados se acercará al valor esperado exacto.
+
+	\begin{theorem}[Ley fuerte de los grandes números]
+		Sea $X_1, X_2, \ldots, X_n$ una secuencia de variables aleatorias independientes e idénticamente distribuidas, cada una con una media $E[X_i] = \mu$ y desviación estándar $\sigma$, entonces
+		\begin{equation*}
+		P(\lim_{n \rightarrow \infty} \bar{X_n} = \mu) = 1.
+		\end{equation*}
+	\end{theorem}
+
+	\section{Ejemplos}
+
+	En esta sección se explica la ley débil de los grandes números con dos ejemplos básicos: el lanzamiento de una moneda y el lanzamiento de un dado.
+	
+	\subsection{Lanzamiento de una moneda}
+	
+	Considere el lanzamiento de una moneda. La variable aleatoria puede tomar dos valores: 0 si el resultado es águila y si el resultado es sol. El valor esperado de esta variable aleatoria es $E[X] = 0\cdot(\frac{1}{2}) + 1\cdot(\frac{1}{2}) = 0.5$. Es decir, se espera que el resultado de los lanzamientos sea mitad sol y mitad águila. 
+	
+	Se formuló un experimento en \textsc{R} \cite{rstatistics} que simulara el lanzamiento de una moneda un número variable de veces. El cuadro \ref{moneda}, muestra los resultados del experimento. Se observa que, a medida que se incrementa el número de lanzamientos, el promedio tiende a acercarse al valor esperado 0.5.
+	
+	\begin{table}
+		\caption{Promedio del lanzamiento de una moneda.}
+		\label{moneda}
+		\centering
+		\begin{tabular}{|r|r|}
+			\hline
+			\bf Lanzamientos & \bf Promedio \\
+			\hline
+			10 & 0.8000 \\
+			100 & 0.5200 \\
+			1,000 & 0.4989 \\
+			10,000 & 0.4980 \\
+			100,000 & 0.4950 \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\subsection{Lanzamiento de un dado}
+	
+	Sea $X$ la variable aleatoria correspondiente al lanzamiento de un dado. En una actividad previa se calculó que el valor esperado del lanzamiento de un dado es $E[X] = 3.5$. De acuerdo a la ley de los grandes números, a medida que se aumente la cantidad de lanzamientos, el promedio de los mismos se acercará al valor 3.5. Esto puede comprobarse fácilmente con un experimento sencillo. Nuevamente se utiliza el lenguaje de programación \textsc{R} \cite{rstatistics} que ayuda a simular el lanzamiento del dado un número variable de veces. Los resultados obtenidos se muestran en el cuadro \ref{dado} y confirman lo estipulado.
+	
+		\begin{table}[h]
+		\caption{Promedio de los lanzamientos de un dado.}
+		\label{dado}
+		\centering
+		\begin{tabular}{|r|r|}
+			\hline
+			\bf Lanzamientos & \bf Promedio \\
+			\hline
+			10 & 5.000 \\
+			100 & 3.230 \\
+			1,000 & 3.525 \\
+			10,000 & 3.492 \\
+			100,000 & 3.503 \\
+			\hline
+		\end{tabular}
+	\end{table}
+	
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
