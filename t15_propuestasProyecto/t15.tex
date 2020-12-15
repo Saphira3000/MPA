@@ -1,0 +1,43 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{graphicx, amsmath}
+\usepackage[small]{caption}
+\usepackage{subcaption, enumerate}
+\usepackage{url}
+\setlength{\parskip}{\baselineskip}
+%\setlength{\parskip}{0.3cm}
+\graphicspath{ {images/} }
+\allowdisplaybreaks
+
+\spanishdecimal{.}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,     
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+\begin{document}
+
+	\thispagestyle{empty}
+
+	\begin{center}
+		{\Large \bf Propuestas de proyecto integrador}\\
+		Gabriela S\'anchez Y.\\
+		5064
+	\end{center}
+  
+  	\begin{enumerate}
+  		\item {\bf Calibración de parámetros:} El método de solución propuesto en el trabajo de tesis requiere diferentes parámetros entre los cuales se encuentran el número de iteraciones del algoritmo, el periodo de reevaluación de probabilidades y el criterio de paro de la búsqueda local. Distintas combinaciones de los mismos dan lugar a mejores o peores soluciones, el objetivo es determinar, mediante un diseño de experimentos, la combinación de parámetros que logra los mejores resultados para las distintas clases de instancias.
+  		\item {\bf Comparación de soluciones:} Como parte del trabajo de tesis se tienen datos sobre las soluciones obtenidas con dos formulaciones diferentes, se desea analizar dichas soluciones para verificar si hay diferencias significativas entre ambas. Como primera instancia se pretende usar estadística descriptiva y después verificar con pruebas de hipótesis que sean aplicables a los datos.
+  		\item {\bf Incidencia delictiva:} Analizar los reportes de incidencia delictiva en las entidades federativas del país en el periodo comprendido del año 2015 a octubre 2020 que proporciona el Secretariado Ejecutivo del Sistema Nacional de Seguridad Pública \cite{sesnsp}, usando estadística descriptiva y pruebas de hipótesis. Además ya que se cuenta con una base de datos amplia, puede aplicarse la ley de los grandes números y el teorema del límite central.
+  	\end{enumerate}
+	
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
