@@ -1,0 +1,59 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[spanish]{babel}
+\usepackage{graphicx, amsmath}
+\usepackage[small]{caption}
+\usepackage{subcaption, enumerate}
+\usepackage{url}
+\setlength{\parskip}{\baselineskip}
+%\setlength{\parskip}{0.3cm}
+\graphicspath{ {images/} }
+\allowdisplaybreaks
+
+\spanishdecimal{.}
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,     
+	urlcolor=blue,
+	citecolor=blue,
+}
+
+\begin{document}
+
+	\thispagestyle{empty}
+
+	\begin{center}
+		{\Large \bf Retroalimentación propuestas de proyecto integrador}\\
+		Gabriela S\'anchez Y.\\
+		5064
+	\end{center}
+  
+\section{Propuesta Erick}
+
+{\em En mi investigación de tesis, se esta analizando una variante del problema de enrutamiento de vehículos, en el cuál, los vehículos salen del depósito inicial y deben moverse a algún nodo en donde se requiera satisfacer la demanda de algún cliente, para nuestro caso el primer movimiento es hacia algún hotel, por lo que se desea analizar la frecuencia/probabilidad con la que los nodos asignados a los hoteles están conectados en la ruta de algún vehículos o no lo están en las diferentes soluciones encontradas, ya que esto permitiría ver la pertinencia de analizar o no un modelo en dónde los hoteles sean tratados como depósitos iniciales}
+
+\subsection{Retroalimentación}
+Me parece interesante lo que deseas hacer pero ¿cuál es la razón por la que te interesa ese caso particular? ¿qué otro tipo de nodos tienes?
+
+\section{Propuesta Johana}
+{\em En el tema de tesis, se cuenta con un modelo matemático y una metaheurística para encontrar la solución del problema planteado. Por medio de la prueba de hipótesis de medias de diferencia se pretende comprobar que existe un ahorro entre la metaheurística y la solución ofrecida por el modelo matemático en un 95\% y determinar que tanto mejora la solución considerando intervalos de confianza del 90\% y 95\%. Estas pruebas se aplicarán tanto por tamaño de instancias (pequeñas, medianas tipo 1, medianas tipo 2 y grandes) como para el total de instancias. Además, se aplicaría la prueba de hipótesis para proporciones para determinar la proporción de mejores soluciones encontradas mediante el uso de la metaheurística.}
+
+\subsection{Retroalimentación}
+
+Podrías revisar primero si tus dos poblaciones de resultados son independientes o no y así sabrías si puedes aplicar más pruebas y de qué tipo deben ser.
+
+\section{Propuesta Mayra}
+{\em Law of Large Numbers. -- For this subject, we wanted to explore some of the qualities of different optimizers used in training convolutional neural networks. Each one of them has different features that try to correct the failings of its predecessors. And it is because all of this different versions that there is not one optimizer that is perfect for a certain problem. With the LLN we want to see if the optimizers are affected in a good or a bad way. If it helps them converge to the closest to optimal value, or if in some cases it becomes flawed and lands in over training.}
+
+\subsection{Retroalimentación}
+
+¿Realizarás el análisis para un problema en particular? Podrías realizar el análisis en conjunto con el teorema del límite central.
+
+	
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\end{document}
