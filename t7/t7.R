@@ -38,6 +38,13 @@ dev.off()
 ajuste = lm(y~x1+x2+x3)
 summary(ajuste)
 
-# transformadas
+# transformaciones
 x1 = rnorm(500, 100, 5)
-y = 0.2 + 0.03*x1^2
+y = 0.03*x1^2 + rnorm(500,0,1)
+
+l2 = 0.5
+l3 = 1
+l4 = 2
+
+y1 = log(x)
+y2 = x^l2

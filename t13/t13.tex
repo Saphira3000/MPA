@@ -103,6 +103,20 @@
 			\hline
 		\end{tabular}
 	\end{table}
+
+\section{Desigualdad de Chebyshev}
+
+\begin{theorem}[Desigualdad de Chebyshev]
+	Sea $X$ una variable aleatoria discreta con valor esperado $E[X] = \mu$ y sea $\epsilon >0$ un número entero positivo. Entonces
+	\begin{equation*}
+	P(|X-\mu| \geq \epsilon) \leq \frac{V[X]}{\epsilon^2}
+	\end{equation*}
+\end{theorem}
+	
+	Si se combina la ley de los grandes números y la desigualdad de Chebyshev se obtiene un resultado interesante:
+	\begin{equation*}
+		P(\left| \frac{S_n}{n} - \mu \right| \geq \epsilon) \leq \frac{\sigma^2}{n\epsilon^2}.
+	\end{equation*}
 	
 \bibliographystyle{plain}
 \bibliography{biblio}

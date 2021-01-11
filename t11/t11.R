@@ -49,3 +49,14 @@ prueba = as.table(cbind(muy_efectivo, efectov))
 colnames(prueba) <- c("muy efectivo","algo efectivo")
 rownames(prueba) <- c("Policia federal","policia estatal")
 chisq.test(prueba, correct = F)
+
+
+# convolucion
+r_separado = numeric()
+r_conv = numeric()
+for (r in 1:100) {
+  x1 = rnorm(1000, 0, 3)
+  x2 = rnorm(1000, 1, 5)
+  x_conv = rnorm(1000, 1, sqrt(9+25))
+  r_conv = c(r_conv, convolve(x1, x2))
+}

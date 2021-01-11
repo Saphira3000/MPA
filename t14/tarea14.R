@@ -18,3 +18,5 @@ for (i in tam_muestra) {
   hist(medias, main = "", ylab = "Frecuencia", xlab = " ", col = "lightpink") 
   dev.off()
 }
+
+mean(datos)
